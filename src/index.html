@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>WAuth: Welsh Authentication</title>
+    <base href="/" />
+    <!--
+      https://www.w3.org/TR/trace-context/
+      Set the `traceparent` in the server's HTML template code. It should be
+      dynamically generated server side to have the server's request trace ID,
+      a parent span ID that was set on the server's request span, and the trace
+      flags to indicate the server's sampling decision
+      (01 = sampled, 00 = not sampled).
+      '{version}-{traceId}-{spanId}-{sampleDecision}'
+    -->
+    <meta
+      name="traceparent"
+      content="00-ab42124a3c573678d4d8b21ba52df3bf-d21f7bc17caa5aba-01"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="index.css"></link>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div id="welsh-authentication-box">
+        <h1>Mewngofnodi / Login </h1>
+        <form>
+            <div id="div-email">
+                <label for="email">Defnyddiwr / User:</label><br>
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    size="50"
+                    placeholder="example@wales.nhs.uk"
+                    onkeydown="onKeyDown()"
+                    onkeyup="onKeyUp()"
+                    onpaste="onPaste()"
+                    z-autocomplete="email"
+                >
+            </div>
+            <br>
+            <div id="div-password">
+                <label for="password">Cyfrinair / Password:</label><br>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    size="50"
+                    onkeydown="onKeyDown()"
+                    onkeyup="onKeyUp()"
+                    onpaste="onPaste()"
+                    autocomplete="new-password"
+                />
+            </div>
+            <br>
+            <div id="div-token">
+                <label for="token">Tocyn / Token:</label><br>
+                <input
+                    id="token"
+                    name="token"
+                    type="text"
+                    size="50"
+                    onkeydown="onKeyDown()"
+                    onkeyup="onKeyUp()"
+                    onpaste="onPaste()"
+                    autocomplete="off"
+                />
+            </div>
+            <br>
+            <input type="submit" value="Submit" onclick="alert('Logon ' + document.getElementById('username').value); return false;">
+        </form>
+    </div>
+    <script type="module" src="document-load.ts"></script>
+  </body>
+</html>
